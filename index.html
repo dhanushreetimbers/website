@@ -201,6 +201,51 @@
             letter-spacing: 0.5px;
         }
         
+        /* Image Slider Styles */
+        .slide-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+            transform: scale(1.1);
+        }
+        
+        .slide-image.active {
+            opacity: 1;
+            transform: scale(1);
+            z-index: 2;
+        }
+        
+        .slide-image.prev {
+            opacity: 0;
+            transform: scale(1);
+            z-index: 1;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .slider-dot.active {
+            background: white;
+            width: 32px;
+            border-radius: 6px;
+        }
+        
+        .slider-dot:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: scale(1.2);
+        }
+        
         .hidden { display: none; }
     </style>
 </head>
@@ -299,8 +344,20 @@
                     
                     <div class="relative fade-in-up" style="animation-delay: 0.2s;">
                         <div class="relative rounded-3xl overflow-hidden shadow-2xl">
-                            <div class="aspect-square bg-gradient-to-br from-green-100 to-amber-100 flex items-center justify-center p-12">
-                                <img src="dhanushree1.png" alt="Dhanushree Logo" class="w-full h-full object-contain drop-shadow-2xl">
+                            <!-- Automatic Image Slider -->
+                            <div class="aspect-square relative overflow-hidden bg-gray-100">
+                                <div id="imageSlider" class="relative w-full h-full">
+                                    <!-- Images will be loaded here by JS -->
+                                </div>
+                                
+                                <!-- Slider Dots -->
+                                <div class="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-10">
+                                    <div class="slider-dot active" onclick="goToSlide(0)"></div>
+                                    <div class="slider-dot" onclick="goToSlide(1)"></div>
+                                    <div class="slider-dot" onclick="goToSlide(2)"></div>
+                                    <div class="slider-dot" onclick="goToSlide(3)"></div>
+                                    <div class="slider-dot" onclick="goToSlide(4)"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -718,6 +775,95 @@
     <script>
         // ⚠️ REPLACE WITH YOUR PHONE NUMBER
         const PHONE_NUMBER = '919876543210';
+
+        // High-quality furniture images from Unsplash
+        const sliderImages = [
+            {
+                url: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80',
+                alt: 'Modern Living Room Sofa'
+            },
+            {
+                url: 'https://images.unsplash.com/photo-1617103996702-96ff29b1c467?w=800&q=80',
+                alt: 'Elegant Dining Table'
+            },
+            {
+                url: 'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=800&q=80',
+                alt: 'Wooden Furniture Set'
+            },
+            {
+                url: 'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=800&q=80',
+                alt: 'Luxury Bedroom Furniture'
+            },
+            {
+                url: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80',
+                alt: 'Designer Coffee Table'
+            }
+        ];
+
+        let currentSlide = 0;
+        let sliderInterval;
+
+        // Initialize Image Slider
+        function initSlider() {
+            const slider = document.getElementById('imageSlider');
+            
+            sliderImages.forEach((img, index) => {
+                const imgElement = document.createElement('img');
+                imgElement.src = img.url;
+                imgElement.alt = img.alt;
+                imgElement.className = 'slide-image';
+                if (index === 0) imgElement.classList.add('active');
+                slider.appendChild(imgElement);
+            });
+            
+            startAutoSlide();
+        }
+
+        function startAutoSlide() {
+            sliderInterval = setInterval(() => {
+                nextSlide();
+            }, 4000); // Change image every 4 seconds
+        }
+
+        function nextSlide() {
+            const slides = document.querySelectorAll('.slide-image');
+            const dots = document.querySelectorAll('.slider-dot');
+            
+            slides[currentSlide].classList.remove('active');
+            slides[currentSlide].classList.add('prev');
+            dots[currentSlide].classList.remove('active');
+            
+            currentSlide = (currentSlide + 1) % slides.length;
+            
+            setTimeout(() => {
+                slides.forEach(s => s.classList.remove('prev'));
+            }, 100);
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function goToSlide(index) {
+            clearInterval(sliderInterval);
+            
+            const slides = document.querySelectorAll('.slide-image');
+            const dots = document.querySelectorAll('.slider-dot');
+            
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            
+            currentSlide = index;
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+            
+            startAutoSlide();
+        }
+
+        // Initialize slider on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            initSlider();
+        });
 
         const products = [
             { id: 1, name: 'Premium Teak Timber', category: 'timber', price: '₹80-150/sq.ft', badge: 'Premium', icon: '🪵' },
