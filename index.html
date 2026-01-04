@@ -3,75 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dhanushree Timbers & Furnitures - Luxury Timber & Bespoke Furniture</title>
-    <meta name="description" content="Premium timber and bespoke furniture crafted in Mayiladuthurai. 15+ years of luxury craftsmanship.">
+    <title>Dhanushree Timbers & Furnitures - Premium Timber & Bespoke Furniture</title>
+    <meta name="description" content="Premium timber and bespoke furniture crafted in Mayiladuthurai. 15+ years of excellence.">
     <link rel="icon" type="image/png" href="dhanushree1.png">
     
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
         
-        body {
-            font-family: 'Inter', sans-serif;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
         
-        .font-serif {
-            font-family: 'Playfair Display', serif;
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
         }
         
-        @keyframes pulse {
-            0%, 100% { opacity: 0.6; }
-            50% { opacity: 0.8; }
+        :root {
+            --primary: #2d5a3d;
+            --secondary: #8b6f47;
+            --accent: #d4a574;
+            --dark: #1a1a1a;
+            --light: #f5f5f5;
         }
         
-        .animate-pulse {
-            animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        /* Smooth Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 6px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+        
+        /* Horizontal Scrollable Gallery */
+        .gallery-scroll {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            gap: 1.5rem;
+            padding: 2rem 0;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .gallery-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .gallery-scroll::-webkit-scrollbar-track {
+            background: #e0e0e0;
+            border-radius: 10px;
+        }
+        
+        .gallery-scroll::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 10px;
+        }
+        
+        .gallery-item {
+            flex: 0 0 auto;
+            scroll-snap-align: start;
+            width: 350px;
+            height: 450px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 2rem;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        /* Modern Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        /* Premium Gradient Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #3d7a52);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(45, 90, 61, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(45, 90, 61, 0.4);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(139, 111, 71, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(139, 111, 71, 0.4);
+        }
+        
+        /* Modern Card Design */
+        .modern-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            border: 1px solid #e8e8e8;
+        }
+        
+        .modern-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+        
+        /* Stats Counter Animation */
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Product Badge */
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         .hidden { display: none; }
-        .block { display: block; }
     </style>
 </head>
-<body class="bg-white">
+<body>
 
-    <!-- Header -->
-    <header class="bg-white/95 backdrop-blur-sm shadow-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 py-3">
+    <!-- Modern Header -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-lg border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <div class="flex items-center gap-3 cursor-pointer" onclick="showPage('home')">
-                    <img src="dhanushree1.png" alt="Dhanushree Timbers Logo" class="h-14 w-14 object-contain">
+                <div class="flex items-center gap-4 cursor-pointer" onclick="showPage('home')">
+                    <img src="dhanushree1.png" alt="Dhanushree Timbers" class="h-16 w-16">
                     <div>
-                        <h1 class="text-xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">Dhanushree Timbers</h1>
-                        <p class="text-xs text-gray-600">Luxury Furniture & Timber</p>
+                        <h1 class="text-xl font-bold" style="color: var(--primary);">DHANUSHREE</h1>
+                        <p class="text-xs tracking-wider" style="color: var(--secondary);">TIMBERS & FURNITURES</p>
                     </div>
                 </div>
 
-                <nav class="hidden md:flex items-center gap-6">
-                    <button onclick="showPage('home')" class="text-gray-700 hover:text-amber-600 font-semibold transition">Home</button>
-                    <button onclick="showPage('products')" class="text-gray-700 hover:text-amber-600 font-semibold transition">Collections</button>
-                    <button onclick="showPage('contact')" class="text-gray-700 hover:text-amber-600 font-semibold transition">Contact</button>
+                <nav class="hidden md:flex items-center gap-8">
+                    <button onclick="showPage('home')" class="text-gray-700 hover:text-primary font-medium transition">Home</button>
+                    <button onclick="showPage('gallery')" class="text-gray-700 hover:text-primary font-medium transition">Gallery</button>
+                    <button onclick="showPage('products')" class="text-gray-700 hover:text-primary font-medium transition">Products</button>
+                    <button onclick="showPage('contact')" class="text-gray-700 hover:text-primary font-medium transition">Contact</button>
+                    <button onclick="openWhatsApp()" class="btn-primary text-sm">Get Quote</button>
                 </nav>
 
                 <button onclick="toggleMobileMenu()" class="md:hidden">
-                    <svg id="menuIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg id="menuIcon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <line x1="3" y1="12" x2="21" y2="12" />
                         <line x1="3" y1="6" x2="21" y2="6" />
                         <line x1="3" y1="18" x2="21" y2="18" />
                     </svg>
-                    <svg id="closeIcon" class="hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg id="closeIcon" class="hidden" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <line x1="18" y1="6" x2="6" y2="18" />
                         <line x1="6" y1="6" x2="18" y2="18" />
                     </svg>
                 </button>
             </div>
 
-            <nav id="mobileMenu" class="hidden md:hidden mt-4 space-y-2">
-                <button onclick="showPage('home'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 hover:bg-amber-50 rounded-lg">Home</button>
-                <button onclick="showPage('products'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 hover:bg-amber-50 rounded-lg">Collections</button>
-                <button onclick="showPage('contact'); toggleMobileMenu();" class="block w-full text-left px-4 py-2 hover:bg-amber-50 rounded-lg">Contact</button>
+            <nav id="mobileMenu" class="hidden md:hidden mt-4 space-y-3">
+                <button onclick="showPage('home'); toggleMobileMenu();" class="block w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50">Home</button>
+                <button onclick="showPage('gallery'); toggleMobileMenu();" class="block w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50">Gallery</button>
+                <button onclick="showPage('products'); toggleMobileMenu();" class="block w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50">Products</button>
+                <button onclick="showPage('contact'); toggleMobileMenu();" class="block w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50">Contact</button>
             </nav>
         </div>
     </header>
@@ -79,245 +251,251 @@
     <!-- Home Page -->
     <main id="homePage">
         <!-- Hero Section -->
-        <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-amber-950 to-slate-900">
-            <div class="absolute inset-0 opacity-10">
-                <div class="absolute top-20 left-20 w-96 h-96 bg-amber-500 rounded-full blur-3xl animate-pulse"></div>
-                <div class="absolute bottom-20 right-20 w-96 h-96 bg-orange-500 rounded-full blur-3xl animate-pulse"></div>
+        <section class="min-h-screen flex items-center relative overflow-hidden" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+            <div class="absolute top-0 right-0 w-1/2 h-full opacity-5">
+                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <pattern id="wood-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                            <path d="M0,50 Q25,30 50,50 T100,50" stroke="currentColor" fill="none" stroke-width="2"/>
+                        </pattern>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#wood-pattern)" />
+                </svg>
             </div>
             
-            <div class="relative z-10 max-w-5xl mx-auto text-center px-4 py-20">
-                <div class="inline-flex items-center gap-2 bg-amber-900/30 backdrop-blur-sm border border-amber-700/50 text-amber-300 px-6 py-2 rounded-full mb-8">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
-                    </svg>
-                    <span class="text-sm font-semibold tracking-wider">LUXURY CRAFTSMANSHIP</span>
+            <div class="max-w-7xl mx-auto px-6 py-20 relative z-10">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in-up">
+                        <div class="inline-block mb-4">
+                            <span class="px-4 py-2 rounded-full text-sm font-semibold" style="background: rgba(45, 90, 61, 0.1); color: var(--primary);">⭐ Premium Quality Since 2009</span>
+                        </div>
+                        
+                        <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight" style="color: var(--dark);">
+                            Crafted with<br/>
+                            <span style="color: var(--primary);">Passion</span> &<br/>
+                            <span style="color: var(--secondary);">Precision</span>
+                        </h1>
+                        
+                        <p class="text-xl text-gray-600 mb-8 leading-relaxed">Premium timber and bespoke furniture handcrafted in Mayiladuthurai. Every piece tells a story of heritage and excellence.</p>
+                        
+                        <div class="flex flex-wrap gap-4">
+                            <button onclick="showPage('gallery')" class="btn-primary flex items-center gap-2">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="14" width="7" height="7"></rect>
+                                    <rect x="3" y="14" width="7" height="7"></rect>
+                                </svg>
+                                View Gallery
+                            </button>
+                            <button onclick="openWhatsApp()" class="btn-secondary flex items-center gap-2">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                                </svg>
+                                WhatsApp Us
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="relative fade-in-up" style="animation-delay: 0.2s;">
+                        <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                            <div class="aspect-square bg-gradient-to-br from-green-100 to-amber-100 flex items-center justify-center p-12">
+                                <img src="dhanushree1.png" alt="Dhanushree Logo" class="w-full h-full object-contain drop-shadow-2xl">
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
-                <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight">
-                    Exquisite Timber & Bespoke Furniture
-                </h1>
-                <p class="text-2xl md:text-3xl text-amber-300 font-light mb-4">Crafted in Mayiladuthurai</p>
-                <p class="text-xl text-gray-300 mb-12 font-light italic">Where Heritage Meets Modern Luxury</p>
-                
-                <div class="flex gap-4 justify-center flex-wrap">
-                    <button onclick="openWhatsApp()" class="flex items-center gap-3 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white px-8 py-4 rounded-full font-semibold shadow-xl hover:shadow-2xl hover:scale-105 transition-all">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-                        </svg>
-                        <span>WhatsApp</span>
-                    </button>
-                    <button onclick="callNow()" class="flex items-center gap-3 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white px-8 py-4 rounded-full font-semibold shadow-xl hover:shadow-2xl hover:scale-105 transition-all">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                        </svg>
-                        <span>Call Now</span>
-                    </button>
-                </div>
-                
-                <div class="mt-16 flex flex-wrap justify-center gap-12 text-white">
+                <!-- Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 fade-in-up" style="animation-delay: 0.4s;">
                     <div class="text-center">
-                        <div class="text-4xl font-bold text-amber-400">15+</div>
-                        <div class="text-sm text-gray-400 mt-1">Years Experience</div>
+                        <div class="stat-number">15+</div>
+                        <p class="text-gray-600 font-medium">Years Experience</p>
                     </div>
                     <div class="text-center">
-                        <div class="text-4xl font-bold text-amber-400">500+</div>
-                        <div class="text-sm text-gray-400 mt-1">Luxury Projects</div>
+                        <div class="stat-number">500+</div>
+                        <p class="text-gray-600 font-medium">Projects Done</p>
                     </div>
                     <div class="text-center">
-                        <div class="text-4xl font-bold text-amber-400">100%</div>
-                        <div class="text-sm text-gray-400 mt-1">Satisfaction</div>
+                        <div class="stat-number">100%</div>
+                        <p class="text-gray-600 font-medium">Satisfaction</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="stat-number">50+</div>
+                        <p class="text-gray-600 font-medium">Artisans</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Collections Preview -->
-        <section class="py-20 px-4 bg-white">
+        <!-- Quick Categories -->
+        <section class="py-24 px-6 bg-white">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-4">Our Collections</h2>
-                    <p class="text-gray-600 text-lg">Discover timeless pieces crafted with passion</p>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4" style="color: var(--dark);">Our Collections</h2>
+                    <p class="text-gray-600 text-lg">Explore our range of premium furniture</p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="group bg-gradient-to-br from-amber-50 to-orange-50 p-8 rounded-2xl cursor-pointer transition-all duration-500 hover:shadow-2xl hover:scale-105 border border-gray-200" onclick="showPage('products')">
-                        <div class="text-6xl mb-6 group-hover:scale-110 transition-transform duration-500">🪵</div>
-                        <h3 class="font-bold text-xl mb-3 text-slate-900">Premium Timber</h3>
-                        <p class="text-gray-600">Finest teak & heritage woods</p>
-                        <div class="mt-6 inline-flex items-center text-amber-700 font-semibold gap-2">
-                            <span>Explore</span>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="5" y1="12" x2="19" y2="12" />
-                                <polyline points="12 5 19 12 12 19" />
-                            </svg>
-                        </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="modern-card text-center cursor-pointer group" onclick="showPage('products')">
+                        <div class="text-6xl mb-4 group-hover:scale-110 transition-transform">🪵</div>
+                        <h3 class="font-bold text-xl mb-2" style="color: var(--primary);">Premium Timber</h3>
+                        <p class="text-gray-600 text-sm">Finest teak & woods</p>
                     </div>
                     
-                    <div class="group bg-gradient-to-br from-amber-50 to-orange-50 p-8 rounded-2xl cursor-pointer transition-all duration-500 hover:shadow-2xl hover:scale-105 border border-gray-200" onclick="showPage('products')">
-                        <div class="text-6xl mb-6 group-hover:scale-110 transition-transform duration-500">🪑</div>
-                        <h3 class="font-bold text-xl mb-3 text-slate-900">Bespoke Furniture</h3>
-                        <p class="text-gray-600">Custom crafted pieces</p>
-                        <div class="mt-6 inline-flex items-center text-amber-700 font-semibold gap-2">
-                            <span>Explore</span>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="5" y1="12" x2="19" y2="12" />
-                                <polyline points="12 5 19 12 12 19" />
-                            </svg>
-                        </div>
+                    <div class="modern-card text-center cursor-pointer group" onclick="showPage('products')">
+                        <div class="text-6xl mb-4 group-hover:scale-110 transition-transform">🪑</div>
+                        <h3 class="font-bold text-xl mb-2" style="color: var(--primary);">Furniture</h3>
+                        <p class="text-gray-600 text-sm">Custom pieces</p>
                     </div>
                     
-                    <div class="group bg-gradient-to-br from-amber-50 to-orange-50 p-8 rounded-2xl cursor-pointer transition-all duration-500 hover:shadow-2xl hover:scale-105 border border-gray-200" onclick="showPage('products')">
-                        <div class="text-6xl mb-6 group-hover:scale-110 transition-transform duration-500">💎</div>
-                        <h3 class="font-bold text-xl mb-3 text-slate-900">Luxury Accessories</h3>
-                        <p class="text-gray-600">Artisan wooden items</p>
-                        <div class="mt-6 inline-flex items-center text-amber-700 font-semibold gap-2">
-                            <span>Explore</span>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="5" y1="12" x2="19" y2="12" />
-                                <polyline points="12 5 19 12 12 19" />
-                            </svg>
-                        </div>
+                    <div class="modern-card text-center cursor-pointer group" onclick="showPage('products')">
+                        <div class="text-6xl mb-4 group-hover:scale-110 transition-transform">💎</div>
+                        <h3 class="font-bold text-xl mb-2" style="color: var(--primary);">Accessories</h3>
+                        <p class="text-gray-600 text-sm">Wooden items</p>
                     </div>
                     
-                    <div class="group bg-gradient-to-br from-amber-50 to-orange-50 p-8 rounded-2xl cursor-pointer transition-all duration-500 hover:shadow-2xl hover:scale-105 border border-gray-200" onclick="showPage('products')">
-                        <div class="text-6xl mb-6 group-hover:scale-110 transition-transform duration-500">🎨</div>
-                        <h3 class="font-bold text-xl mb-3 text-slate-900">Designer Décor</h3>
-                        <p class="text-gray-600">Carved masterpieces</p>
-                        <div class="mt-6 inline-flex items-center text-amber-700 font-semibold gap-2">
-                            <span>Explore</span>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="5" y1="12" x2="19" y2="12" />
-                                <polyline points="12 5 19 12 12 19" />
-                            </svg>
-                        </div>
+                    <div class="modern-card text-center cursor-pointer group" onclick="showPage('products')">
+                        <div class="text-6xl mb-4 group-hover:scale-110 transition-transform">🎨</div>
+                        <h3 class="font-bold text-xl mb-2" style="color: var(--primary);">Wall Art</h3>
+                        <p class="text-gray-600 text-sm">Carved décor</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Why Choose Us -->
-        <section class="py-20 px-4 bg-gradient-to-br from-slate-50 to-gray-100">
+        <section class="py-24 px-6" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-4">The Dhanushree Distinction</h2>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4" style="color: var(--dark);">Why Choose Us</h2>
                     <p class="text-gray-600 text-lg">Excellence in every detail</p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200">
-                        <div class="w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                            <svg class="text-white" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="modern-card">
+                        <div class="w-16 h-16 rounded-2xl mb-6 flex items-center justify-center" style="background: linear-gradient(135deg, var(--primary), #3d7a52);">
+                            <svg class="text-white" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                                 <polyline points="20 6 9 17 4 12" />
                             </svg>
                         </div>
-                        <h3 class="font-bold text-xl mb-3 text-slate-900">Premium Materials</h3>
-                        <p class="text-gray-600">Finest teak and heritage woods</p>
+                        <h3 class="font-bold text-xl mb-3" style="color: var(--primary);">Premium Materials</h3>
+                        <p class="text-gray-600 leading-relaxed">Hand-selected timber of the highest quality for lasting beauty</p>
                     </div>
                     
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200">
-                        <div class="w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                            <svg class="text-white" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <div class="modern-card">
+                        <div class="w-16 h-16 rounded-2xl mb-6 flex items-center justify-center" style="background: linear-gradient(135deg, var(--primary), #3d7a52);">
+                            <svg class="text-white" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                                 <polyline points="20 6 9 17 4 12" />
                             </svg>
                         </div>
-                        <h3 class="font-bold text-xl mb-3 text-slate-900">Master Artisans</h3>
-                        <p class="text-gray-600">Generations of expertise</p>
+                        <h3 class="font-bold text-xl mb-3" style="color: var(--primary);">Master Craftsmanship</h3>
+                        <p class="text-gray-600 leading-relaxed">Three generations of woodworking expertise and tradition</p>
                     </div>
                     
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200">
-                        <div class="w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                            <svg class="text-white" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <div class="modern-card">
+                        <div class="w-16 h-16 rounded-2xl mb-6 flex items-center justify-center" style="background: linear-gradient(135deg, var(--primary), #3d7a52);">
+                            <svg class="text-white" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                                 <polyline points="20 6 9 17 4 12" />
                             </svg>
                         </div>
-                        <h3 class="font-bold text-xl mb-3 text-slate-900">Precision Delivery</h3>
-                        <p class="text-gray-600">Your timeline is our commitment</p>
+                        <h3 class="font-bold text-xl mb-3" style="color: var(--primary);">Custom Design</h3>
+                        <p class="text-gray-600 leading-relaxed">Bespoke pieces tailored to your exact specifications</p>
                     </div>
                     
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200">
-                        <div class="w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                            <svg class="text-white" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <div class="modern-card">
+                        <div class="w-16 h-16 rounded-2xl mb-6 flex items-center justify-center" style="background: linear-gradient(135deg, var(--primary), #3d7a52);">
+                            <svg class="text-white" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                                 <polyline points="20 6 9 17 4 12" />
                             </svg>
                         </div>
-                        <h3 class="font-bold text-xl mb-3 text-slate-900">Transparent Excellence</h3>
-                        <p class="text-gray-600">Honest pricing, exceptional value</p>
+                        <h3 class="font-bold text-xl mb-3" style="color: var(--primary);">Timely Delivery</h3>
+                        <p class="text-gray-600 leading-relaxed">We respect your time and deliver on schedule</p>
                     </div>
                     
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200">
-                        <div class="w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                            <svg class="text-white" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <div class="modern-card">
+                        <div class="w-16 h-16 rounded-2xl mb-6 flex items-center justify-center" style="background: linear-gradient(135deg, var(--primary), #3d7a52);">
+                            <svg class="text-white" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                                 <polyline points="20 6 9 17 4 12" />
                             </svg>
                         </div>
-                        <h3 class="font-bold text-xl mb-3 text-slate-900">Bespoke Creations</h3>
-                        <p class="text-gray-600">Your vision perfectly realized</p>
+                        <h3 class="font-bold text-xl mb-3" style="color: var(--primary);">Quality Guarantee</h3>
+                        <p class="text-gray-600 leading-relaxed">Comprehensive warranty and aftercare support</p>
                     </div>
                     
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200">
-                        <div class="w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                            <svg class="text-white" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <div class="modern-card">
+                        <div class="w-16 h-16 rounded-2xl mb-6 flex items-center justify-center" style="background: linear-gradient(135deg, var(--primary), #3d7a52);">
+                            <svg class="text-white" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                                 <polyline points="20 6 9 17 4 12" />
                             </svg>
                         </div>
-                        <h3 class="font-bold text-xl mb-3 text-slate-900">Quality Guarantee</h3>
-                        <p class="text-gray-600">Comprehensive warranty</p>
+                        <h3 class="font-bold text-xl mb-3" style="color: var(--primary);">Fair Pricing</h3>
+                        <p class="text-gray-600 leading-relaxed">Transparent pricing with no hidden costs</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Testimonials -->
-        <section class="py-20 px-4 bg-gradient-to-br from-amber-50 to-orange-50">
+        <section class="py-24 px-6 bg-white">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-4">Client Testimonials</h2>
-                    <p class="text-gray-600 text-lg">Trusted by discerning clients</p>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4" style="color: var(--dark);">What Clients Say</h2>
+                    <p class="text-gray-600 text-lg">Trusted by hundreds of satisfied customers</p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all border border-amber-100">
-                        <div class="flex mb-4">
-                            <svg class="fill-amber-400 text-amber-400" width="20" height="20" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
-                            <svg class="fill-amber-400 text-amber-400" width="20" height="20" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
-                            <svg class="fill-amber-400 text-amber-400" width="20" height="20" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
-                            <svg class="fill-amber-400 text-amber-400" width="20" height="20" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
-                            <svg class="fill-amber-400 text-amber-400" width="20" height="20" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="modern-card">
+                        <div class="flex mb-4 gap-1">
+                            <svg class="w-5 h-5" style="color: var(--accent);" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                            <svg class="w-5 h-5" style="color: var(--accent);" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                            <svg class="w-5 h-5" style="color: var(--accent);" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                            <svg class="w-5 h-5" style="color: var(--accent);" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                            <svg class="w-5 h-5" style="color: var(--accent);" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
                         </div>
-                        <p class="text-gray-700 mb-6 italic">"The quality is exceptional. Every detail exceeded expectations. Truly premium craftsmanship."</p>
-                        <div class="pt-4 border-t border-gray-200">
-                            <p class="font-bold text-slate-900">Rajesh Kumar</p>
-                            <p class="text-sm text-gray-500">Kumbakonam</p>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all border border-amber-100">
-                        <div class="flex mb-4">
-                            <svg class="fill-amber-400 text-amber-400" width="20" height="20" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
-                            <svg class="fill-amber-400 text-amber-400" width="20" height="20" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
-                            <svg class="fill-amber-400 text-amber-400" width="20" height="20" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
-                            <svg class="fill-amber-400 text-amber-400" width="20" height="20" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
-                            <svg class="fill-amber-400 text-amber-400" width="20" height="20" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
-                        </div>
-                        <p class="text-gray-700 mb-6 italic">"Our bespoke dining table is a masterpiece. The attention to detail is stunning."</p>
-                        <div class="pt-4 border-t border-gray-200">
-                            <p class="font-bold text-slate-900">Priya Selvam</p>
-                            <p class="text-sm text-gray-500">Mayiladuthurai</p>
+                        <p class="text-gray-700 mb-6 leading-relaxed">"Exceptional quality and craftsmanship. The dining table we ordered exceeded all our expectations!"</p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold" style="background: var(--primary);">RK</div>
+                            <div>
+                                <p class="font-bold" style="color: var(--primary);">Rajesh Kumar</p>
+                                <p class="text-sm text-gray-500">Kumbakonam</p>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all border border-amber-100">
-                        <div class="flex mb-4">
-                            <svg class="fill-amber-400 text-amber-400" width="20" height="20" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
-                            <svg class="fill-amber-400 text-amber-400" width="20" height="20" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
-                            <svg class="fill-amber-400 text-amber-400" width="20" height="20" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
-                            <svg class="fill-amber-400 text-amber-400" width="20" height="20" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
-                            <svg class="fill-amber-400 text-amber-400" width="20" height="20" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                    <div class="modern-card">
+                        <div class="flex mb-4 gap-1">
+                            <svg class="w-5 h-5" style="color: var(--accent);" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                            <svg class="w-5 h-5" style="color: var(--accent);" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                            <svg class="w-5 h-5" style="color: var(--accent);" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                            <svg class="w-5 h-5" style="color: var(--accent);" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                            <svg class="w-5 h-5" style="color: var(--accent);" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
                         </div>
-                        <p class="text-gray-700 mb-6 italic">"Reliable partner for high-end projects. Consistent quality and professional service."</p>
-                        <div class="pt-4 border-t border-gray-200">
-                            <p class="font-bold text-slate-900">Murugan & Co.</p>
-                            <p class="text-sm text-gray-500">Thanjavur</p>
+                        <p class="text-gray-700 mb-6 leading-relaxed">"Beautiful custom furniture. Their attention to detail and customer service is outstanding."</p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold" style="background: var(--primary);">PS</div>
+                            <div>
+                                <p class="font-bold" style="color: var(--primary);">Priya Selvam</p>
+                                <p class="text-sm text-gray-500">Mayiladuthurai</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modern-card">
+                        <div class="flex mb-4 gap-1">
+                            <svg class="w-5 h-5" style="color: var(--accent);" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                            <svg class="w-5 h-5" style="color: var(--accent);" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                            <svg class="w-5 h-5" style="color: var(--accent);" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                            <svg class="w-5 h-5" style="color: var(--accent);" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                            <svg class="w-5 h-5" style="color: var(--accent);" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
+                        </div>
+                        <p class="text-gray-700 mb-6 leading-relaxed">"Professional service and top-quality work. Highly recommend for anyone looking for premium furniture."</p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold" style="background: var(--primary);">MC</div>
+                            <div>
+                                <p class="font-bold" style="color: var(--primary);">Murugan & Co.</p>
+                                <p class="text-sm text-gray-500">Thanjavur</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -325,264 +503,288 @@
         </section>
 
         <!-- CTA Section -->
-        <section class="py-20 px-4 bg-gradient-to-br from-amber-600 to-orange-600">
+        <section class="py-24 px-6" style="background: linear-gradient(135deg, var(--primary), #3d7a52);">
             <div class="max-w-4xl mx-auto text-center text-white">
-                <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6">Ready to Create Your Masterpiece?</h2>
-                <p class="text-xl mb-10 text-amber-50">Let's bring your vision to life</p>
-                <div class="flex gap-4 justify-center flex-wrap">
-                    <button onclick="openWhatsApp()" class="flex items-center gap-3 bg-white text-amber-700 px-8 py-4 rounded-full font-bold hover:bg-amber-50 transition-all shadow-xl hover:scale-105">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-                        </svg>
-                        Start Consultation
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Start Your Project?</h2>
+                <p class="text-xl mb-12 opacity-90">Let's create something beautiful together</p>
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <button onclick="openWhatsApp()" class="bg-white px-10 py-4 rounded-full font-bold hover:scale-105 transition" style="color: var(--primary);">
+                        <span class="flex items-center gap-2">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                            </svg>
+                            Contact Us Now
+                        </span>
                     </button>
-                    <button onclick="showPage('contact')" class="flex items-center gap-3 bg-slate-900 text-white px-8 py-4 rounded-full font-bold hover:bg-slate-800 transition-all shadow-xl hover:scale-105">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                            <line x1="16" y1="2" x2="16" y2="6" />
-                            <line x1="8" y1="2" x2="8" y2="6" />
-                            <line x1="3" y1="10" x2="21" y2="10" />
-                        </svg>
-                        Book Visit
+                    <button onclick="showPage('contact')" class="border-2 border-white text-white px-10 py-4 rounded-full font-bold hover:bg-white hover:scale-105 transition" style="hover: color: var(--primary);">
+                        Schedule Visit
                     </button>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Products Page -->
-    <main id="productsPage" class="hidden py-20 px-4 bg-gradient-to-br from-slate-50 to-gray-100 min-h-screen">
+    <!-- Gallery Page with Scrollable Gallery -->
+    <main id="galleryPage" class="hidden min-h-screen py-24 px-6 bg-white">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <h1 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-4">Our Collections</h1>
-                <p class="text-gray-600 text-lg">Exquisite pieces for discerning tastes</p>
+                <h1 class="text-4xl md:text-6xl font-bold mb-4" style="color: var(--dark);">Our Work Gallery</h1>
+                <p class="text-gray-600 text-lg">Browse through our finest creations</p>
+            </div>
+            
+            <!-- Scrollable Gallery Section -->
+            <div class="mb-20">
+                <h3 class="text-2xl font-bold mb-6" style="color: var(--primary);">Featured Projects</h3>
+                <div class="gallery-scroll">
+                    <div class="gallery-item" style="background: linear-gradient(135deg, #2d5a3d, #3d7a52);">
+                        <div class="flex items-center justify-center h-full text-white text-9xl">🪑</div>
+                        <div class="gallery-overlay">
+                            <h4 class="text-xl font-bold mb-2">Grand Dining Table</h4>
+                            <p class="text-sm opacity-90">Handcrafted teak dining set for 8 people</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" style="background: linear-gradient(135deg, #8b6f47, #d4a574);">
+                        <div class="flex items-center justify-center h-full text-white text-9xl">🛋️</div>
+                        <div class="gallery-overlay">
+                            <h4 class="text-xl font-bold mb-2">Luxury Sofa Set</h4>
+                            <p class="text-sm opacity-90">Premium wooden frame with custom cushions</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" style="background: linear-gradient(135deg, #2d5a3d, #3d7a52);">
+                        <div class="flex items-center justify-center h-full text-white text-9xl">📚</div>
+                        <div class="gallery-overlay">
+                            <h4 class="text-xl font-bold mb-2">Study Room Setup</h4>
+                            <p class="text-sm opacity-90">Complete executive study furniture</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" style="background: linear-gradient(135deg, #8b6f47, #d4a574);">
+                        <div class="flex items-center justify-center h-full text-white text-9xl">🛏️</div>
+                        <div class="gallery-overlay">
+                            <h4 class="text-xl font-bold mb-2">Master Bedroom</h4>
+                            <p class="text-sm opacity-90">King size bed with carved headboard</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" style="background: linear-gradient(135deg, #2d5a3d, #3d7a52);">
+                        <div class="flex items-center justify-center h-full text-white text-9xl">🎨</div>
+                        <div class="gallery-overlay">
+                            <h4 class="text-xl font-bold mb-2">Wall Art Collection</h4>
+                            <p class="text-sm opacity-90">Hand-carved decorative panels</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" style="background: linear-gradient(135deg, #8b6f47, #d4a574);">
+                        <div class="flex items-center justify-center h-full text-white text-9xl">☕</div>
+                        <div class="gallery-overlay">
+                            <h4 class="text-xl font-bold mb-2">Coffee Table Series</h4>
+                            <p class="text-sm opacity-90">Modern designs with glass tops</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Traditional Gallery Grid -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold mb-6" style="color: var(--primary);">More from Our Portfolio</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="modern-card aspect-square flex items-center justify-center text-6xl">🪵</div>
+                    <div class="modern-card aspect-square flex items-center justify-center text-6xl">🚪</div>
+                    <div class="modern-card aspect-square flex items-center justify-center text-6xl">🪟</div>
+                    <div class="modern-card aspect-square flex items-center justify-center text-6xl">💎</div>
+                    <div class="modern-card aspect-square flex items-center justify-center text-6xl">🏺</div>
+                    <div class="modern-card aspect-square flex items-center justify-center text-6xl">🖼️</div>
+                    <div class="modern-card aspect-square flex items-center justify-center text-6xl">🎯</div>
+                    <div class="modern-card aspect-square flex items-center justify-center text-6xl">⚡</div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <button onclick="openWhatsApp()" class="btn-primary">Request Custom Quote</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Products Page -->
+    <main id="productsPage" class="hidden py-24 px-6 bg-white min-h-screen">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4" style="color: var(--dark);">Our Products</h1>
+                <p class="text-gray-600 text-lg">Premium furniture for every space</p>
             </div>
             
             <div class="flex flex-wrap gap-3 justify-center mb-12">
-                <button onclick="filterProducts('all')" class="filter-btn px-6 py-3 rounded-full font-semibold transition-all bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-lg">All</button>
-                <button onclick="filterProducts('timber')" class="filter-btn px-6 py-3 rounded-full font-semibold transition-all bg-white text-gray-700 hover:bg-gray-100 shadow">Timber</button>
-                <button onclick="filterProducts('tables')" class="filter-btn px-6 py-3 rounded-full font-semibold transition-all bg-white text-gray-700 hover:bg-gray-100 shadow">Tables</button>
-                <button onclick="filterProducts('coffee')" class="filter-btn px-6 py-3 rounded-full font-semibold transition-all bg-white text-gray-700 hover:bg-gray-100 shadow">Coffee</button>
-                <button onclick="filterProducts('sofas')" class="filter-btn px-6 py-3 rounded-full font-semibold transition-all bg-white text-gray-700 hover:bg-gray-100 shadow">Sofas</button>
-                <button onclick="filterProducts('small')" class="filter-btn px-6 py-3 rounded-full font-semibold transition-all bg-white text-gray-700 hover:bg-gray-100 shadow">Small</button>
-                <button onclick="filterProducts('decor')" class="filter-btn px-6 py-3 rounded-full font-semibold transition-all bg-white text-gray-700 hover:bg-gray-100 shadow">Decor</button>
+                <button onclick="filterProducts('all')" class="filter-btn btn-primary">All</button>
+                <button onclick="filterProducts('timber')" class="filter-btn px-6 py-3 rounded-full border-2 font-semibold transition hover:scale-105" style="border-color: var(--primary); color: var(--primary);">Timber</button>
+                <button onclick="filterProducts('tables')" class="filter-btn px-6 py-3 rounded-full border-2 font-semibold transition hover:scale-105" style="border-color: var(--primary); color: var(--primary);">Tables</button>
+                <button onclick="filterProducts('coffee')" class="filter-btn px-6 py-3 rounded-full border-2 font-semibold transition hover:scale-105" style="border-color: var(--primary); color: var(--primary);">Coffee</button>
+                <button onclick="filterProducts('sofas')" class="filter-btn px-6 py-3 rounded-full border-2 font-semibold transition hover:scale-105" style="border-color: var(--primary); color: var(--primary);">Sofas</button>
+                <button onclick="filterProducts('small')" class="filter-btn px-6 py-3 rounded-full border-2 font-semibold transition hover:scale-105" style="border-color: var(--primary); color: var(--primary);">Small</button>
+                <button onclick="filterProducts('decor')" class="filter-btn px-6 py-3 rounded-full border-2 font-semibold transition hover:scale-105" style="border-color: var(--primary); color: var(--primary);">Décor</button>
             </div>
 
             <div id="productsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Products will be loaded here by JavaScript -->
+                <!-- Products loaded by JS -->
             </div>
         </div>
     </main>
 
     <!-- Contact Page -->
-    <main id="contactPage" class="hidden py-20 px-4 bg-gradient-to-br from-slate-50 to-gray-100 min-h-screen">
+    <main id="contactPage" class="hidden py-24 px-6 bg-white min-h-screen">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-16">
-                <h1 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-4">Get in Touch</h1>
-                <p class="text-gray-600 text-lg">Let's discuss your project</p>
+                <h1 class="text-4xl md:text-6xl font-bold mb-4" style="color: var(--dark);">Get in Touch</h1>
+                <p class="text-gray-600 text-lg">We'd love to hear from you</p>
             </div>
             
-            <div class="bg-white rounded-2xl shadow-xl p-8 border border-gray-200">
-                <div class="space-y-6 mb-8">
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
+            <div class="modern-card">
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="flex items-start gap-4">
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--primary);">
                             <svg class="text-white" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                             </svg>
                         </div>
                         <div>
-                            <p class="font-semibold">Call: +91 98765 43210</p>
+                            <p class="font-semibold text-gray-500 text-sm mb-1">PHONE</p>
+                            <p class="font-bold text-xl" style="color: var(--primary);">+91 98765 43210</p>
                         </div>
                     </div>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-green-600 rounded-xl flex items-center justify-center">
+                    
+                    <div class="flex items-start gap-4">
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background: #25D366;">
                             <svg class="text-white" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
                             </svg>
                         </div>
                         <div>
-                            <button onclick="openWhatsApp()" class="font-semibold text-amber-600 hover:underline">Chat on WhatsApp</button>
+                            <p class="font-semibold text-gray-500 text-sm mb-1">WHATSAPP</p>
+                            <button onclick="openWhatsApp()" class="font-bold text-xl hover:underline" style="color: #25D366;">Chat with us</button>
                         </div>
                     </div>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
+                    
+                    <div class="flex items-start gap-4 md:col-span-2">
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--secondary);">
                             <svg class="text-white" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                                 <circle cx="12" cy="10" r="3" />
                             </svg>
                         </div>
                         <div>
-                            <p class="font-semibold">Mayiladuthurai, Tamil Nadu</p>
+                            <p class="font-semibold text-gray-500 text-sm mb-1">LOCATION</p>
+                            <p class="font-bold text-xl" style="color: var(--primary);">Mayiladuthurai, Tamil Nadu</p>
                         </div>
                     </div>
                 </div>
                 
-                <form onsubmit="handleSubmit(event)" class="space-y-4">
-                    <input type="text" placeholder="Your Name" required class="w-full border border-gray-300 rounded-lg px-4 py-3">
-                    <input type="tel" placeholder="Phone Number" required class="w-full border border-gray-300 rounded-lg px-4 py-3">
-                    <textarea placeholder="Your Message" rows="4" required class="w-full border border-gray-300 rounded-lg px-4 py-3"></textarea>
-                    <button type="submit" class="w-full bg-gradient-to-r from-amber-600 to-orange-600 text-white py-4 rounded-full font-bold hover:from-amber-700 hover:to-orange-700 transition-all shadow-lg">
-                        Send Message
-                    </button>
+                <form onsubmit="handleSubmit(event)" class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-semibold mb-2 text-gray-700">Your Name</label>
+                        <input type="text" required class="w-full border-2 rounded-xl px-4 py-3 focus:outline-none transition" style="border-color: #e0e0e0; focus:border-color: var(--primary);">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold mb-2 text-gray-700">Phone Number</label>
+                        <input type="tel" required class="w-full border-2 rounded-xl px-4 py-3 focus:outline-none transition" style="border-color: #e0e0e0;">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold mb-2 text-gray-700">Your Message</label>
+                        <textarea rows="5" required class="w-full border-2 rounded-xl px-4 py-3 focus:outline-none transition" style="border-color: #e0e0e0;"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary w-full text-center">Send Message</button>
                 </form>
             </div>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-white py-12 px-4">
+    <footer class="py-12 px-6 text-white" style="background: linear-gradient(135deg, var(--dark), #2d2d2d);">
         <div class="max-w-6xl mx-auto text-center">
-            <div class="flex justify-center mb-4">
-                <img src="dhanushree1.png" alt="Dhanushree Timbers Logo" class="h-16 w-16 object-contain opacity-90">
-            </div>
-            <h3 class="text-2xl font-bold mb-4 text-amber-400">Dhanushree Timbers & Furnitures</h3>
-            <p class="text-gray-400 mb-6">Luxury craftsmanship in Mayiladuthurai</p>
+            <img src="dhanushree1.png" alt="Dhanushree Logo" class="h-16 w-16 mx-auto mb-4 opacity-90">
+            <h3 class="text-2xl font-bold mb-2">Dhanushree Timbers & Furnitures</h3>
+            <p class="text-gray-400 mb-6">Premium craftsmanship since 2009</p>
             <p class="text-sm text-gray-500">© 2024 All rights reserved</p>
         </div>
     </footer>
 
-    <!-- Floating Action Buttons -->
-    <button onclick="openWhatsApp()" class="fixed bottom-6 right-6 bg-gradient-to-r from-emerald-600 to-green-600 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition z-50">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <!-- Floating WhatsApp Button -->
+    <button onclick="openWhatsApp()" class="fixed bottom-6 right-6 w-16 h-16 rounded-full shadow-2xl hover:scale-110 transition z-50 flex items-center justify-center" style="background: #25D366;">
+        <svg class="text-white" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
         </svg>
     </button>
 
-    <button onclick="callNow()" class="md:hidden fixed bottom-24 right-6 bg-gradient-to-r from-amber-600 to-orange-600 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition z-50">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-        </svg>
-    </button>
-
-    <!-- Exit Intent Popup -->
-    <div id="exitPopup" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-        <div class="bg-white rounded-2xl p-8 max-w-md relative">
-            <button onclick="closeExitPopup()" class="absolute top-4 right-4">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="18" y1="6" x2="6" y2="18" />
-                    <line x1="6" y1="6" x2="18" y2="18" />
-                </svg>
-            </button>
-            <h3 class="text-2xl font-bold mb-4">Get Your Quote in 10 Minutes</h3>
-            <p class="text-gray-700 mb-6">Share your requirements on WhatsApp</p>
-            <button onclick="openWhatsApp(); closeExitPopup();" class="w-full bg-gradient-to-r from-emerald-600 to-green-600 text-white py-4 rounded-full font-bold hover:from-emerald-700 hover:to-green-700">
-                Get Quote on WhatsApp
-            </button>
-        </div>
-    </div>
-
     <script>
-        // ⚠️ IMPORTANT: Replace with your actual phone number
-        const PHONE_NUMBER = '919159390999'; // Format: 91XXXXXXXXXX
+        // ⚠️ REPLACE WITH YOUR PHONE NUMBER
+        const PHONE_NUMBER = '919876543210';
 
-        // Products data
         const products = [
             { id: 1, name: 'Premium Teak Timber', category: 'timber', price: '₹80-150/sq.ft', badge: 'Premium', icon: '🪵' },
             { id: 2, name: 'Heritage Country Wood', category: 'timber', price: '₹50-90/sq.ft', icon: '🌳' },
-            { id: 3, name: 'Grand Dining Collection', category: 'tables', price: '₹18,000-45,000', badge: 'Signature', icon: '🪑' },
+            { id: 3, name: 'Grand Dining Collection', category: 'tables', price: '₹18,000-45,000', badge: 'Bestseller', icon: '🪑' },
             { id: 4, name: 'Executive Study Desk', category: 'tables', price: '₹8,000-18,000', icon: '📚' },
-            { id: 5, name: 'Designer Coffee Tables', category: 'coffee', price: '₹5,000-15,000', badge: 'Featured', icon: '☕' },
-            { id: 6, name: 'Luxury Wooden Sofas', category: 'sofas', price: '₹25,000-65,000', badge: 'Signature', icon: '🛋️' },
+            { id: 5, name: 'Designer Coffee Tables', category: 'coffee', price: '₹5,000-15,000', badge: 'New', icon: '☕' },
+            { id: 6, name: 'Luxury Wooden Sofas', category: 'sofas', price: '₹25,000-65,000', badge: 'Premium', icon: '🛋️' },
             { id: 7, name: 'Artisan Jewellery Box', category: 'small', price: '₹800-3,500', icon: '💎' },
             { id: 8, name: 'Carved Wall Art', category: 'decor', price: '₹1,200-8,000', badge: 'Featured', icon: '🎨' }
         ];
 
         let currentCategory = 'all';
 
-        // Show page function
         function showPage(page) {
-            document.getElementById('homePage').classList.add('hidden');
-            document.getElementById('productsPage').classList.add('hidden');
-            document.getElementById('contactPage').classList.add('hidden');
-            
+            ['homePage', 'galleryPage', 'productsPage', 'contactPage'].forEach(p => {
+                document.getElementById(p).classList.add('hidden');
+            });
             document.getElementById(page + 'Page').classList.remove('hidden');
-            
-            if (page === 'products') {
-                renderProducts();
-            }
-            
+            if (page === 'products') renderProducts();
             window.scrollTo(0, 0);
         }
 
-        // Mobile menu toggle
         function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            const menuIcon = document.getElementById('menuIcon');
-            const closeIcon = document.getElementById('closeIcon');
-            
-            menu.classList.toggle('hidden');
-            menuIcon.classList.toggle('hidden');
-            closeIcon.classList.toggle('hidden');
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+            document.getElementById('menuIcon').classList.toggle('hidden');
+            document.getElementById('closeIcon').classList.toggle('hidden');
         }
 
-        // WhatsApp function
         function openWhatsApp() {
-            window.open(`https://wa.me/${PHONE_NUMBER}?text=Hello, I am interested in your luxury furniture`, '_blank');
+            window.open(`https://wa.me/${PHONE_NUMBER}?text=Hello! I'm interested in your furniture`, '_blank');
         }
 
-        // Call function
-        function callNow() {
-            window.location.href = `tel:+${PHONE_NUMBER}`;
-        }
-
-        // Filter products
-        function filterProducts(category) {
-            currentCategory = category;
+        function filterProducts(cat) {
+            currentCategory = cat;
             renderProducts();
-            
-            // Update button styles
             document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('bg-gradient-to-r', 'from-amber-600', 'to-orange-600', 'text-white', 'shadow-lg');
-                btn.classList.add('bg-white', 'text-gray-700', 'shadow');
+                btn.className = 'filter-btn px-6 py-3 rounded-full border-2 font-semibold transition hover:scale-105';
+                btn.style.borderColor = 'var(--primary)';
+                btn.style.color = 'var(--primary)';
             });
-            
-            event.target.classList.add('bg-gradient-to-r', 'from-amber-600', 'to-orange-600', 'text-white', 'shadow-lg');
-            event.target.classList.remove('bg-white', 'text-gray-700');
+            event.target.className = 'filter-btn btn-primary';
         }
 
-        // Render products
         function renderProducts() {
             const grid = document.getElementById('productsGrid');
             const filtered = currentCategory === 'all' ? products : products.filter(p => p.category === currentCategory);
             
-            grid.innerHTML = filtered.map(product => `
-                <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all overflow-hidden border border-gray-200">
-                    <div class="relative bg-gradient-to-br from-amber-100 to-orange-100 h-64 flex items-center justify-center">
-                        ${product.badge ? `<div class="absolute top-4 right-4 bg-gradient-to-r from-amber-500 to-orange-600 text-white text-xs px-3 py-1 rounded-full font-bold">${product.badge}</div>` : ''}
-                        <span class="text-8xl">${product.icon}</span>
+            grid.innerHTML = filtered.map(p => `
+                <div class="modern-card relative overflow-hidden">
+                    ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
+                    <div class="aspect-square flex items-center justify-center text-8xl mb-6 rounded-2xl" style="background: linear-gradient(135deg, #f8f9fa, #e9ecef);">
+                        ${p.icon}
                     </div>
-                    <div class="p-6">
-                        <h3 class="font-bold text-xl mb-2 text-slate-900">${product.name}</h3>
-                        <p class="text-amber-600 font-bold text-lg mb-6">${product.price}</p>
-                        <button onclick="openWhatsApp()" class="w-full bg-gradient-to-r from-emerald-600 to-green-600 text-white py-3 rounded-full font-semibold hover:from-emerald-700 hover:to-green-700 transition-all shadow-lg">
-                            Request Quote
-                        </button>
-                    </div>
+                    <h3 class="font-bold text-xl mb-2" style="color: var(--primary);">${p.name}</h3>
+                    <p class="font-bold text-2xl mb-6" style="color: var(--secondary);">${p.price}</p>
+                    <button onclick="openWhatsApp()" class="btn-secondary w-full">Request Quote</button>
                 </div>
             `).join('');
         }
 
-        // Form submission
-        function handleSubmit(event) {
-            event.preventDefault();
+        function handleSubmit(e) {
+            e.preventDefault();
             alert('Thank you! We will contact you soon.');
-            event.target.reset();
+            e.target.reset();
         }
 
-        // Exit intent popup
-        let exitPopupShown = false;
-        document.addEventListener('mouseleave', (e) => {
-            if (e.clientY <= 0 && !exitPopupShown) {
-                document.getElementById('exitPopup').classList.remove('hidden');
-                exitPopupShown = true;
-            }
-        });
-
-        function closeExitPopup() {
-            document.getElementById('exitPopup').classList.add('hidden');
-        }
-
-        // Initialize
         renderProducts();
     </script>
 </body>
