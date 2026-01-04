@@ -2,7 +2,7 @@
 
 > Luxury Timber & Bespoke Furniture Crafted in Mayiladuthurai
 
-[![Live Website](https://img.shields.io/badge/Live-Website-success)](https://YOUR-USERNAME.github.io/REPO-NAME/)
+[![Live Website](https://img.shields.io/badge/Live-Website-success)]([https://github.com/dhanushreetimbers/website/blob/ac34922c2b2aaaa3cf3583ef50a01d4a24f9e6f6/dhanushree1.png)]
 [![GitHub Pages](https://img.shields.io/badge/Hosted%20on-GitHub%20Pages-blue)](https://pages.github.com/)
 
 ## 🌟 About
